@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     {
       // underscored: true, // converts camelcase automaticaly
       timestamps: false,
-      tableName: 'Users',
+      // tableName: 'Users',
     },
   );
 

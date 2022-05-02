@@ -1,3 +1,5 @@
+const { User } = require('../models');
+
 const isDisplayNameValid = (req, res, next) => {
   const { displayName } = req.body;
 
@@ -37,8 +39,21 @@ const isPasswordValid = (req, res, next) => {
   next();
 };
 
+const userExists = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+  
+    const user = await User.findOne({ where: { email } });
+    if (user) return res.status(409).json({ message: 'User already registered' });
+    next();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
  isDisplayNameValid,
  isEmailValid,
  isPasswordValid,
+ userExists,
 };

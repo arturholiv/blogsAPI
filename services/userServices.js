@@ -11,9 +11,9 @@ const create = async (user) => {
   } catch (e) {
     // console.log('linha 12', e);
     return { 
-      code: 409,
+      code: 500,
       message: {
-      message: 'User already registered',
+      message: 'erro interno',
     } };
   }
 };

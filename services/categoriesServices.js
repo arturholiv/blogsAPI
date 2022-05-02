@@ -20,6 +20,7 @@ const getAll = async () => {
     });
     if (categories) return { code: 200, categories };
   } catch (e) {
+    console.log(e);
     return { code: 500, message: { message: 'erro interno' } };
   }
 };

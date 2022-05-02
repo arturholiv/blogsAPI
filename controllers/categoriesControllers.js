@@ -11,7 +11,6 @@ const create = async (req, res) => {
 };
 
 const getAll = async (req, res) => {
-  console.log(req.user);
   const result = await categoriesServices.getAll();
 
   if (result.message) return res.status(result.code).json(result.message);

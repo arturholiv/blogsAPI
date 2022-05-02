@@ -4,7 +4,7 @@
  */
 module.exports = {
   // You can change the template path to another path
-  templateRootPath: "./.templates",
+  templateRootPath: './.templates',
   // After copying the template file the `replaceFileTextFn` function is executed
   replaceFileTextFn: (fileText, templateName, utils) => {
     // @see https://www.npmjs.com/package/change-case
@@ -14,11 +14,11 @@ module.exports = {
       .replace(/__templateName__/g, templateName)
       .replace(
         /__templateNameToPascalCase__/g,
-        changeCase.pascalCase(templateName)
+        changeCase.pascalCase(templateName),
       )
       .replace(
         /__templateNameToParamCase__/g,
-        changeCase.paramCase(templateName)
+        changeCase.paramCase(templateName),
       );
   },
   renameFileFn: (fileName, templateName, utils) => {
@@ -30,5 +30,5 @@ module.exports = {
     const { changeCase } = _utils;
     const newDirectoryName = changeCase.paramCase(templateName);
     return directoryName.replace(/__templateName__/g, newDirectoryName);
-  }
+  },
 };

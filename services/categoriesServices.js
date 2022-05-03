@@ -6,8 +6,7 @@ const create = async (categorie) => {
 
     if (newCategorie) return { code: 201, newCategorie };
   } catch (e) {
-    console.log(e);
-    return { code: 500, message: { message: 'internal error' } };
+    return { code: 500, message: { message: 'internal server error' } };
   }
 };
 
@@ -20,8 +19,7 @@ const getAll = async () => {
     });
     if (categories) return { code: 200, categories };
   } catch (e) {
-    console.log(e);
-    return { code: 500, message: { message: 'erro interno' } };
+    return { code: 500, message: { message: 'internal server error' } };
   }
 };
 

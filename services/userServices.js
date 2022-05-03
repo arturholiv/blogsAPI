@@ -13,7 +13,7 @@ const create = async (user) => {
     return { 
       code: 500,
       message: {
-      message: 'erro interno',
+      message: 'Internal Server Error',
     } };
   }
 };
@@ -24,7 +24,7 @@ const getAll = async () => {
 
     if (users) return { code: 200, users };
   } catch (e) {
-    return { code: 500, message: { message: 'erro interno' } };
+    return { code: 500, message: { message: 'Internal Server Error' } };
   }
 };
 

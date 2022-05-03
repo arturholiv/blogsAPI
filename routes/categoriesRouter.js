@@ -6,6 +6,6 @@ const categoriesControllers = require('../controllers/categoriesControllers');
 const route = express();
 
 route.post('/', authMiddleware, nameIsValid, categoriesControllers.create);
-route.get('/', categoriesControllers.getAll);
+route.get('/', authMiddleware, categoriesControllers.getAll);
 
 module.exports = route;

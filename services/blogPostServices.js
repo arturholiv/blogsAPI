@@ -1,6 +1,19 @@
-const { BlogPosts, PostsCategories, Categories } = require('../models');
+const { BlogPosts, PostsCategories, Categories, User } = require('../models');
 
 const internalError = { code: 500, message: { message: 'internal error' } };
+
+const getAll = async () => {
+  try {
+    const posts = await BlogPosts.findAll({ include: [
+      { model: User, as: 'user', attributes: { exclude: ['password'] } }, 
+      { model: Categories, as: 'categories', through: { attributes: [] } },
+    ] });
+
+    return { code: 200, posts };
+  } catch (e) {
+    return { code: 500, message: { message: 'internal error' } };
+  }
+};
 
 const create = async ({ title, content, userId, categoryIds }) => {
   const postInfo = { title, content, userId };
@@ -28,5 +41,6 @@ const create = async ({ title, content, userId, categoryIds }) => {
   }
 };
 module.exports = {
+  getAll,
   create,
 };

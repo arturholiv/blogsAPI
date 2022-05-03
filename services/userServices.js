@@ -61,9 +61,24 @@ const getById = async (id) => {
   }
 };
 
+const getIdByName = async (displayName) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        displayName,
+      },
+    });
+
+    return user.dataValues.id;
+  } catch (e) {
+    return null;
+  }
+};
+
 module.exports = {
   create,
   getAll,
   login,
   getById,
+  getIdByName,
 };
